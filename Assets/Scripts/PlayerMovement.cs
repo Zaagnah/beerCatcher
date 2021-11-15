@@ -16,9 +16,12 @@ public class PlayerMovement : MonoBehaviour
     public GameObject obj2;
     public GameObject obj3;
     public GameObject obj4;
+    
+    
 
     private void Start()
     {
+        
         scoreValuer = 0;
         rig = GetComponent<Rigidbody2D>();
     }
@@ -49,10 +52,13 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             scoreValuer ++;
+            
             FindObjectOfType<BeerDestr>().Destr();
+            
         }
        
     }
+
     public void EndGame()
     {
         StartCoroutine(RestartLevel());
@@ -77,19 +83,19 @@ public class PlayerMovement : MonoBehaviour
 
 
         }
-        else if(scoreValuer < 40)
+        else if(scoreValuer >= 10 && scoreValuer < 30)
         {
             obj2.SetActive(true);
             Time.timeScale = 1f;
             Time.fixedDeltaTime = Time.fixedDeltaTime * slowness;
         }
-        else if(scoreValuer < 70)
+        else if(scoreValuer >= 30 && scoreValuer < 45)
         {
             obj3.SetActive(true);
             Time.timeScale = 1f;
             Time.fixedDeltaTime = Time.fixedDeltaTime * slowness;
         }
-        else if(scoreValuer < 100)
+        else if(scoreValuer >= 45 && scoreValuer < 70)
         {
             obj4.SetActive(true);
             Time.timeScale = 1f;
